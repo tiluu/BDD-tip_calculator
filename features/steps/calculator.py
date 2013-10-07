@@ -19,9 +19,17 @@ def step_impl(context):
 @when(u'I enter the meal cost is $50')
 def step_impl(context):
 	br = context.browser
-	br.get('http://localhost:5000')
 	meal_cost = br.find_element_by_name("meal_cost")
 	meal_cost.send_keys("50")
+
+@when(u'I enter the tip is 20%')
+def step_impl(context):
+	br = context.browser
 	tip_percentage = br.find_element_by_name("tip_percentage")
 	tip_percentage.send_keys("20")
+	br.find_element_by_id("submit").click()
 
+@then(u'I should see the tip amount is $10')
+def step_impl(context):
+	br = context.browser
+	result = br.find_element_by_id('result')
