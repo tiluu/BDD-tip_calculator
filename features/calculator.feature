@@ -7,7 +7,11 @@ Feature: Confirming that the tip calculator form works
 
 
 	Scenario: check that tip value is correct
-		When I enter the meal cost is $50 
+		When I go to the tip calculator
+		And I enter the meal cost is $50 
 		And I enter the tip is 20%
-		Then I should see the tip amount is $10
+		And I submit the form
+		Then I should see the tip amount is $10 on results page
+
+	
 		
